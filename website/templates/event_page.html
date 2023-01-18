@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ content.title }}{% endblock %}
+
+{% block meta %}
+<meta name="title" content="{{content.title}}">
+<meta name="description" content="Event {{ content.title }} pada {{ page.waktu }} di {{ page.tempat }}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{SITEURL}}">
+<meta property="og:title" content="Surabaya.py | {{page.title}}">
+<meta property="og:description" content="Event {{ page.tema }} pada {{ page.waktu }} di {{ page.tempat }}.">
+<meta property="og:image" content="{{SITEURL}}/assets/image/event/{{ page.poster }}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{SITEURL}}">
+<meta property="twitter:title" content="Surabaya.py | {{page.title}}">
+<meta property="twitter:description" content="Event {{ page.tema }} pada {{ page.waktu }} di {{ page.tempat }}.">
+<meta property="twitter:image" content="{{SITEURL}}/assets/image/event/{{ page.poster }}">
+{% endblock %}
+
+{% block content %}
+
+{% if content.isOpen %}
+<section class="mt-12 section-with-bg default-page">
+  <div class="container" data-aos="fade-up">
+    <div class="section-header">
+      <h2>{{ content.title }}</h2>
+    </div>
+    <div class="border rounded flex flex-col-reverse md:flex-row">
+      <div class="px-3 md:px-10 mb-5 text-justify flex-1">
+        <div>
+          <p>{{ content.desc }}</p>
+          <p>Tema: {{ content.tema }}</p>
+          <p>Waktu: {{ content.waktu }}</p>
+          <p>Tempat: {{ content.tempat }}</p>
+          <p>{{ content.desc_closing }}</p>
+        </div>
+        <!-- <div class="mx-auto flex flex-col justify-center">
+          <p>Didukung oleh:</p>
+          <a href="{{ page.support_url }}">
+            <img class="w-full md:w-60" src="{{ page.support_image_url }}" alt="{{ page.support_name }}">
+          </a>
+        </div> -->
+      </div>
+      <div class="w-full md:w-1/2 mx-auto flex-1">
+        <div class="">
+          <img class="img-fluid" alt="webinar" src="http://localhost:8000/media/{{content.img}}">
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 flex flex-row justify-center">
+      <a href="{{content.link}}"
+        class="mx-auto px-5 py-2 w-full md:w-1/2 text-white font-bold bg-yellow-500 hover:bg-yellow-300 rounded-lg text-center">
+        Link kegiatan
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- <section class="pt-5 pb-5">
+  <div class="container">
+
+  </div>
+</section> -->
+
+
+{% endblock %}
